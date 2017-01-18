@@ -9,6 +9,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+valid-user.properties
 
 # Eclipse Core
 .project
