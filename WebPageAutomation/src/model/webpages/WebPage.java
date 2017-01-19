@@ -37,6 +37,10 @@ public enum WebPage {
 		return Arrays.asList(WebPage.values());
 	}
 	
+	public String getCode() {
+		return this.code;
+	}
+	
 	public String getDescription() {
 		return this.description;
 	}

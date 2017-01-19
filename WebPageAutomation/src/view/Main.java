@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage stage) throws Exception {
 				
 		ApplicationContainer appContainer = new ApplicationContainer(stage);
-		ProductSelectionView entryView = new ProductSelectionView();
+		ProductSelectionView entryView = new ProductSelectionView();		
 		appContainer.switchView(entryView);
 					
 		Scene scene = new Scene(appContainer, 450, 650);
