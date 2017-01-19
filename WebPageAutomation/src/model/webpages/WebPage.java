@@ -9,18 +9,19 @@ import model.webpages.timesheet.TimeSheetAccesser;
 
 public enum WebPage {
 	
-	TIMESHEET("TS", new TimeSheetAccesser(), "TimeSheet"),
-	FACEBOOK("FB", new TimeSheetAccesser(), "Facebook"),
-	BUBBLE("BU", new TimeSheetAccesser(), "Bubble");
+	TIMESHEET("TS", new TimeSheetAccesser(), "TimeSheet", "Automated and customizable app for easy schedule loading."),
+	HOTMAIL("FB", new TimeSheetAccesser(), "Hotmail", "Send mails from your Hotmail account with ease from the comfort of your desktop."),
+	GMAIL("BU", new TimeSheetAccesser(), "Gmail", "Send mails from your Gmail account with ease from the comfort of your desktop.");
 	
 	private String code;
 	private Automatable webpage;
+	private String name;
 	private String description;
 	
-	private WebPage(String code, Automatable webpage, String description) {
+	private WebPage(String code, Automatable webpage, String name, String description) {
 		this.code = code;
 		this.webpage = webpage;
-		this.description = description;
+		this.name = name;
 	}
 	
 	public static Automatable getAutomatableByCode(String code) {
@@ -46,7 +47,7 @@ public enum WebPage {
 	
 	@Override
 	public String toString() {
-		return this.description;
+		return this.name;
 	}
 
 }

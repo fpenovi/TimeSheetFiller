@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.layouts.ApplicationContainer;
+import view.pages.ProductSelectionView;
 
 public class Main extends Application {
 	
@@ -19,7 +20,7 @@ public class Main extends Application {
 		appContainer.switchView(entryView);
 					
 		Scene scene = new Scene(appContainer, 450, 650);
-		stage.setScene(scene);		
+		stage.setScene(scene);
 		stage.show();
 	}
 	

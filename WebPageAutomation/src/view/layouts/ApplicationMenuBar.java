@@ -1,5 +1,6 @@
 package view.layouts;
 
+import controller.appcontainer.ExitAppHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -19,8 +20,14 @@ public class ApplicationMenuBar extends MenuBar {
 	
 	
 	private void populateOptions() {
-		this.file.getItems().add(new MenuItem("Exit"));
-		this.help.getItems().add(new MenuItem("About"));		
+		
+		// File
+		MenuItem exitButton = new MenuItem("Exit");
+		exitButton.setOnAction(new ExitAppHandler());
+		this.file.getItems().add(exitButton);
+		
+		// Help
+		this.help.getItems().add(new MenuItem("About"));
 	}
 	
 }

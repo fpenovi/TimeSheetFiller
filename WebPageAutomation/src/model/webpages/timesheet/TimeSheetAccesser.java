@@ -71,6 +71,9 @@ public class TimeSheetAccesser implements Automatable {
 	
 	@Override
 	public void close() {
+		if (this.webClient == null)
+			return;
+		
 		this.webClient.close();
 	}
 
