@@ -10,8 +10,8 @@ import model.webpages.timesheet.TimeSheetAccesser;
 public enum WebPage {
 	
 	TIMESHEET("TS", new TimeSheetAccesser(), "TimeSheet", "Automated and customizable app for easy schedule loading."),
-	HOTMAIL("FB", new TimeSheetAccesser(), "Hotmail", "Send mails from your Hotmail account with ease from the comfort of your desktop."),
-	GMAIL("BU", new TimeSheetAccesser(), "Gmail", "Send mails from your Gmail account with ease from the comfort of your desktop.");
+	HOTMAIL("HM", new TimeSheetAccesser(), "Hotmail", "Send mails from your Hotmail account with ease from the comfort of your desktop."),
+	GMAIL("GM", new TimeSheetAccesser(), "Gmail", "Send mails from your Gmail account with ease from the comfort of your desktop.");
 	
 	private String code;
 	private Automatable webpage;
@@ -22,6 +22,7 @@ public enum WebPage {
 		this.code = code;
 		this.webpage = webpage;
 		this.name = name;
+		this.description = description;
 	}
 	
 	public static Automatable getAutomatableByCode(String code) {
