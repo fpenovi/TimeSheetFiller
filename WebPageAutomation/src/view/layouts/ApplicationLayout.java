@@ -45,7 +45,7 @@ public abstract class ApplicationLayout extends BorderPane {
 		this.title.setId("header-title");
 		this.description.setId("header-description");
 		this.header.getChildren().add(vbTextContainer);
-		this.getStylesheets().add(getClass().getResource("application-container.css").toExternalForm());
+		// this.getStylesheets().add(getClass().getResource("application-container.css").toExternalForm());
 	}
 
 }
