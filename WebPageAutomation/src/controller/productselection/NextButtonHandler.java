@@ -20,11 +20,10 @@ public class NextButtonHandler implements EventHandler<ActionEvent> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void handle(ActionEvent event) {
-		// TODO obtener el valor del select y pedirle al singleton de vistas que me de la apropiada y switcheo a esa
 		ComboBox<WebPage> select = (ComboBox<WebPage>) callerPage.lookup("#combobox-products");
-		ProductViewManager chosenProductManager = GUIManager.getInstance().getProductView(select.getSelectionModel().getSelectedItem().getCode());
+		ProductViewManager chosenProductManager = GUIManager.getInstance().getProductViewManager(select.getSelectionModel().getSelectedItem().getCode());
 		ApplicationContainer appContainer = callerPage.getApplicationContainer();
-		appContainer.switchView(chosenProductManager.getCurrentView());
+		appContainer.switchView(chosenProductManager.getCurrentView(callerPage));
 	}
 
 }

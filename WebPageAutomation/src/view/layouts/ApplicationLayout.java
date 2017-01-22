@@ -1,5 +1,6 @@
 package view.layouts;
 
+import controller.appcontainer.GoBackHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -14,6 +15,7 @@ public abstract class ApplicationLayout extends BorderPane {
 	protected Label title;
 	protected Text description;
 	protected Button goBack;
+	protected ApplicationLayout previousPage;
 	
 	
 	public ApplicationLayout() {
@@ -41,6 +43,16 @@ public abstract class ApplicationLayout extends BorderPane {
 	}
 	
 	
+	public ApplicationLayout getPreviousPage() {
+		return this.previousPage;
+	}
+	
+	
+	public void setEntryPoint(ApplicationLayout entryPoint) {
+		this.previousPage = entryPoint;
+	}		
+	
+	
 	protected void makeGoBackButton() {
 		this.goBack.setVisible(true);
 	}
@@ -60,11 +72,12 @@ public abstract class ApplicationLayout extends BorderPane {
 		this.goBack = new Button("");
 		this.goBack.getStyleClass().add("header-go-back-btn");
 		this.goBack.setVisible(false);
+		this.goBack.setOnAction(new GoBackHandler(this));
 		
 		VBox vbTextContainer = new VBox();
 		vbTextContainer.setId("title-description-container");
 		vbTextContainer.getChildren().addAll(this.title, this.description);
 		this.header.getChildren().addAll(this.goBack, vbTextContainer);
-	}		
+	}
 
 }

@@ -18,8 +18,15 @@ public abstract class ProductViewManager {
 		this.currentView = 0;
 	}
 	
+	
 	public ApplicationLayout getCurrentView() {
 		return this.views.get(this.currentView);
+	}
+	
+
+	public ApplicationLayout getCurrentView(ApplicationLayout entryPoint) {
+		this.views.get(this.currentView).setEntryPoint(entryPoint);;
+		return this.getCurrentView();
 	}
 
 }

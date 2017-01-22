@@ -4,7 +4,6 @@ import controller.productselection.NextButtonHandler;
 import controller.productselection.ProductSelectHandler;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
@@ -23,6 +22,7 @@ public class ProductSelectionView extends ApplicationLayout {
 		setUpNextButton();
 		setUpContainer();		
 		this.setCenter(this.container);
+		this.getStylesheets().add(getClass().getResource("/CSS/product-selection.css").toExternalForm());
 		Event.fireEvent(this.productSelecter, new ActionEvent());	// Applies the change of selecting the first element
 	}
 	
@@ -50,9 +50,9 @@ public class ProductSelectionView extends ApplicationLayout {
 	
 	
 	private void setUpContainer() {
-		this.container = new VBox(10);
+		this.container = new VBox();
+		this.container.setId("select-container");
 		this.container.getChildren().addAll(this.productSelecter, this.nextButton);
-		this.container.setAlignment(Pos.CENTER);
 	}
 
 }

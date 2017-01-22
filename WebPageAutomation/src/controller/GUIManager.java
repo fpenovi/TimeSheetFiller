@@ -21,7 +21,7 @@ public class GUIManager {
 		return instance;
 	}
 	
-	public ProductViewManager getProductView(String productCode) {
+	public ProductViewManager getProductViewManager(String productCode) {
 		return this.productViews.get(productCode);
 	}
 
