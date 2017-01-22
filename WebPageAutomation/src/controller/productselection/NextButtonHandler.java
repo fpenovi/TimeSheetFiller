@@ -23,7 +23,7 @@ public class NextButtonHandler implements EventHandler<ActionEvent> {
 		// TODO obtener el valor del select y pedirle al singleton de vistas que me de la apropiada y switcheo a esa
 		ComboBox<WebPage> select = (ComboBox<WebPage>) callerPage.lookup("#combobox-products");
 		ProductViewManager chosenProductManager = GUIManager.getInstance().getProductView(select.getSelectionModel().getSelectedItem().getCode());
-		ApplicationContainer appContainer = (ApplicationContainer) callerPage.getScene().getRoot();
+		ApplicationContainer appContainer = callerPage.getApplicationContainer();
 		appContainer.switchView(chosenProductManager.getCurrentView());
 	}
 

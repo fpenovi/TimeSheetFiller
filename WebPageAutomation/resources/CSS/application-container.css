@@ -1,5 +1,45 @@
-@charset"utf-8";
 
 #header-container {
-	-fx-background-color: #7b9bce;
+	-fx-background-color: #ffa84c;
+	-fx-min-height: 110;
+}
+
+#title-description-container {
+	-fx-spacing: 10;
+	-fx-padding: 10 0 0 20;
+}
+
+#header-title {
+	-fx-font-family: "Arial Black";
+	-fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #21c0ff;
+    -fx-opacity: 0.80;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 6, 0.0 , 0 , 1 );
+}
+
+#header-description {
+	-fx-font-size: 13px;
+	-fx-font-weight: lighter;
+	-fx-opacity: 0.6;
+}
+
+.header-go-back-btn {
+	-fx-background-image: url(../images/goBack.png);
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: transparent;
+	-fx-background-position: center;	
+	-fx-background-radius: 20px;
+	-fx-min-height: 32px;
+	-fx-min-width: 32px;
+	-fx-translate-x: 5;
+	-fx-translate-y: 18;
+}
+
+.header-go-back-btn:hover {
+	-fx-background-color: rgba(255, 255, 255, 0.30);
+}
+
+.header-go-back-btn:pressed {
+	-fx-background-color: derive(rgba(33, 192, 255, 0.80), 0%);
 }

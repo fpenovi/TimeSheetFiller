@@ -9,8 +9,9 @@ public class TimeSheetViewManager extends ProductViewManager {
 	public TimeSheetViewManager() {
 		super();
 		this.webPage = WebPage.TIMESHEET.getWebPage();
-		this.webPage.create();
+		//this.webPage.create();
 		this.views.add(new TimeSheetLogin());
+		// TODO Agregar el resto de las vistas!
 	}
 
 }

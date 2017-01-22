@@ -11,10 +11,6 @@ public class ExitAppHandler implements EventHandler<ActionEvent> {
 		// TODO antes de ejecutar esto se tienen que liberar recursos (archivos abiertos)
 		// cerrar el virtual-browser, etc
 		Platform.exit();
-	}
-	
-	public void handle() {		
-		this.handle(new ActionEvent());
-	}
+	}	
 
 }

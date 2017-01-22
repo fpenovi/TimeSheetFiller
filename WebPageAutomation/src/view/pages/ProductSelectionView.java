@@ -25,6 +25,12 @@ public class ProductSelectionView extends ApplicationLayout {
 		this.setCenter(this.container);
 		Event.fireEvent(this.productSelecter, new ActionEvent());	// Applies the change of selecting the first element
 	}
+	
+	
+	@Override
+	public void updateHeader() {
+		this.getApplicationContainer().getStage().setTitle("Web Page Automation");
+	}
 		
 
 	private void populateProductSelecter() {
