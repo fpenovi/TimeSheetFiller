@@ -1,6 +1,7 @@
 
 #timesheet-login-container {
-	-fx-alignment: center;
+	-fx-alignment: top-center;
+	-fx-translate-y: 100;
 	-fx-hgap: 10;
 	-fx-vgap: 10;
 }

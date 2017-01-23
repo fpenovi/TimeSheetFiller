@@ -24,7 +24,7 @@ public abstract class ApplicationLayout extends BorderPane {
 		buildHeader();
 		this.setTop(this.header);
 		this.setBottom(this.footer);
-		this.getStylesheets().add(getClass().getResource("/CSS/application-container.css").toExternalForm());
+		this.getStylesheets().add(getClass().getResource("/CSS/application-layout.css").toExternalForm());
 	}
 	
 	

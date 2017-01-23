@@ -44,3 +44,7 @@
 .header-go-back-btn:pressed {
 	-fx-background-color: derive(rgba(33, 192, 255, 0.80), 0%);
 }
+
+.label {
+	-fx-text-fill: red;
+}
