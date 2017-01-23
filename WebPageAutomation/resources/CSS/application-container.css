@@ -25,6 +25,7 @@
 }
 
 .header-go-back-btn {
+	-fx-focus-traversable: false;
 	-fx-background-image: url(../images/goBack.png);
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: transparent;

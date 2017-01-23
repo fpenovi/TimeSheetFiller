@@ -1,7 +1,7 @@
 package view.managers;
 
 import model.webpages.WebPage;
-import view.pages.timesheet.TimeSheetLogin;
+import view.pages.timesheet.TimeSheetLoginView;
 
 public class TimeSheetViewManager extends ProductViewManager {
 	
@@ -10,7 +10,7 @@ public class TimeSheetViewManager extends ProductViewManager {
 		super();
 		this.webPage = WebPage.TIMESHEET.getWebPage();
 		//this.webPage.create();
-		this.views.add(new TimeSheetLogin());
+		this.views.add(new TimeSheetLoginView());
 		// TODO Agregar el resto de las vistas!
 	}
 
