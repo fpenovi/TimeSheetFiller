@@ -148,10 +148,10 @@ public abstract class ApplicationLayout extends StackPane {
 		this.animationModal.setId("animation-modal");
 		this.animationModal.setOpacity(0);
 		this.animationModal.setDisable(true);
-		this.fadeIn = new FadeTransition(Duration.millis(400), this.animationModal);
+		this.fadeIn = new FadeTransition(Duration.millis(500), this.animationModal);
 		this.fadeIn.setFromValue(0);
 		this.fadeIn.setToValue(100);
-		this.fadeOut = new FadeTransition(Duration.millis(400), this.animationModal);
+		this.fadeOut = new FadeTransition(Duration.millis(500), this.animationModal);
 		this.fadeOut.setFromValue(100);
 		this.fadeOut.setToValue(0);
 	}
