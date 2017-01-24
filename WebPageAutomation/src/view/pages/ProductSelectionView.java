@@ -21,7 +21,7 @@ public class ProductSelectionView extends ApplicationLayout {
 		populateProductSelecter();
 		setUpNextButton();
 		setUpContainer();		
-		this.layout.setCenter(this.container);
+		this.miniPageContainer.getChildren().add(0, container);
 		this.getStylesheets().add(getClass().getResource("/CSS/product-selection.css").toExternalForm());
 		Event.fireEvent(this.productSelecter, new ActionEvent());	// Applies the change of selecting the first element
 	}

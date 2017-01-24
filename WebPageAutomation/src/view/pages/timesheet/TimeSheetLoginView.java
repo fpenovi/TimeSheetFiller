@@ -20,14 +20,14 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		super();
 		this.makeGoBackButton();
 		this.buildLoginForm();
+		this.title.setText("Login");
+		this.description.setText("Provide your TimeSheet username and password.");
 		this.getStylesheets().add(getClass().getResource("/CSS/login.css").toExternalForm());
 	}
 
 
 	@Override
-	public void updateHeader() {
-		this.title.setText("Login");
-		this.description.setText("Provide your TimeSheet username and password.");
+	public void updateHeader() {		
 		this.getApplicationContainer().getStage().setTitle("TimeSheet Filler");
 	}
 	
@@ -49,13 +49,13 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		this.logInBtn.setTranslateY(20);
 		
 		this.logInBtn.setOnAction(event -> {
-			
+			// TODO do it!
 		});
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);
-		loginContainer.add(this.logInBtn, 1, 2);		
-		this.layout.setCenter(loginContainer);
+		loginContainer.add(this.logInBtn, 1, 2);
+		this.miniPageContainer.getChildren().add(0, loginContainer);
 	}
 	
 	

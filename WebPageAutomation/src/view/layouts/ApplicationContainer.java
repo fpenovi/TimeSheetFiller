@@ -38,13 +38,13 @@ public class ApplicationContainer extends StackPane {
 		
 		this.currentPage.whiteScreenOn(callBack -> {
 			this.pageContainer.getChildren().remove(this.currentPage);
+			newView.updateHeader();
 			newView.whiteScreenOff(event -> {
 				this.currentPage = newView;
 				newView.setWhiteScreen(false);
 			});
 		});
-				
-		newView.updateHeader();		
+			
 	}
 	
 	

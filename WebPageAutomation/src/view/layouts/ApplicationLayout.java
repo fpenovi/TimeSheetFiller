@@ -17,6 +17,7 @@ import javafx.util.Duration;
 public abstract class ApplicationLayout extends StackPane {
 	
 	protected BorderPane layout;
+	protected StackPane miniPageContainer;
 	protected HBox header;
 	protected HBox footer;
 	protected Label title;
@@ -33,11 +34,14 @@ public abstract class ApplicationLayout extends StackPane {
 		this.header = new HBox();
 		this.footer = new HBox();
 		this.layout = new BorderPane();
+		this.miniPageContainer = new StackPane();		
+		this.layout.setCenter(miniPageContainer);
 		buildHeader();
 		this.layout.setTop(this.header);
 		this.layout.setBottom(this.footer);
 		makeModals();
-		this.getChildren().addAll(this.layout, this.animationModal);
+		this.miniPageContainer.getChildren().add(animationModal);
+		this.getChildren().addAll(this.layout);
 		this.getStylesheets().add(getClass().getResource("/CSS/application-layout.css").toExternalForm());
 	}
 	
