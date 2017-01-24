@@ -44,7 +44,7 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);
-		this.setCenter(loginContainer);
+		this.layout.setCenter(loginContainer);
 	}
 	
 	

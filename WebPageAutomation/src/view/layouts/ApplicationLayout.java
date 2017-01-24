@@ -5,11 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public abstract class ApplicationLayout extends BorderPane {
+public abstract class ApplicationLayout extends StackPane {
 	
+	protected BorderPane layout;
 	protected HBox header;
 	protected HBox footer;
 	protected Label title;
@@ -21,9 +23,11 @@ public abstract class ApplicationLayout extends BorderPane {
 	public ApplicationLayout() {
 		this.header = new HBox();
 		this.footer = new HBox();
+		this.layout = new BorderPane();
 		buildHeader();
-		this.setTop(this.header);
-		this.setBottom(this.footer);
+		this.layout.setTop(this.header);
+		this.layout.setBottom(this.footer);
+		this.getChildren().add(this.layout);
 		this.getStylesheets().add(getClass().getResource("/CSS/application-layout.css").toExternalForm());
 	}
 	
