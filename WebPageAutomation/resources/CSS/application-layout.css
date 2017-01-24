@@ -48,3 +48,7 @@
 .label {
 	-fx-text-fill: red;
 }
+
+#animation-modal {
+	-fx-background-color: white;
+}

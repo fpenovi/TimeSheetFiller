@@ -10,7 +10,7 @@ public class GoBackHandler implements EventHandler<ActionEvent> {
 	
 	
 	public GoBackHandler(ApplicationLayout callerPage) {
-		this.callerPage = callerPage;
+		this.callerPage = callerPage;		
 	}
 	
 

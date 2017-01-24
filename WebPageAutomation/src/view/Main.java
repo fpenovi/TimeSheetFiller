@@ -15,13 +15,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 				
-		ApplicationContainer appContainer = new ApplicationContainer(stage);
 		ProductSelectionView entryView = new ProductSelectionView();
+		ApplicationContainer appContainer = new ApplicationContainer(stage, entryView);
 
 		Scene scene = new Scene(appContainer, 450, 650);
-		stage.setScene(scene);
-		
-		appContainer.switchView(entryView);
+		stage.setScene(scene);	
 		stage.show();
 	}
 	

@@ -1,6 +1,7 @@
 package view.pages.timesheet;
 
 import controller.utils.TextCharacterLimiter;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,6 +13,7 @@ public class TimeSheetLoginView extends ApplicationLayout {
 	private TextField username;
 	private PasswordField password;
 	private final int MAX_CHARACTERS = 25;
+	private Button logInBtn;
 	
 	
 	public TimeSheetLoginView() {
@@ -41,9 +43,18 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		this.password.setTextFormatter(new TextCharacterLimiter(MAX_CHARACTERS));
 		Label userNameDesc = new Label("Username");
 		Label passwordDesc = new Label("Password");
+		this.logInBtn = new Button("Log In");
+		
+		this.logInBtn.setTranslateX(160);
+		this.logInBtn.setTranslateY(20);
+		
+		this.logInBtn.setOnAction(event -> {
+			
+		});
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);
+		loginContainer.add(this.logInBtn, 1, 2);		
 		this.layout.setCenter(loginContainer);
 	}
 	
