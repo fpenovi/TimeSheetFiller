@@ -48,8 +48,8 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		this.logInBtn.setTranslateX(160);
 		this.logInBtn.setTranslateY(20);
 		
-		this.logInBtn.setOnAction(event -> {
-			// TODO do it!
+		this.logInBtn.setOnAction(event -> {			
+			
 		});
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
