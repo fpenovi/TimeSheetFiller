@@ -21,8 +21,8 @@ public class Main extends Application {
 		Scene scene = new Scene(appContainer, 450, 650);
 		stage.setScene(scene);
 		
-		appContainer.switchView(entryView);
 		stage.show();
+		appContainer.switchView(entryView);
 	}
 	
 	

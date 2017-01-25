@@ -40,13 +40,15 @@ public class ApplicationContainer extends BorderPane {
 		}
 		
 		this.pageContainer.getChildren().add(0, newView);
+		newView.setVisible(false);
 		
-		this.currentPage.fadeOut(callBack -> {
+		this.currentPage.fadeOut(callBack -> {			
 			this.pageContainer.getChildren().remove(this.currentPage);
+			newView.setVisible(true);
 			newView.fadeIn(callBack2 -> {
 				this.currentPage = newView;
 				newView.updateHeader();
-			});
+			});			
 		});
 		
 	}
