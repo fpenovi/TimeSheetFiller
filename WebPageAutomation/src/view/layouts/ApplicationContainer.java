@@ -2,6 +2,7 @@ package view.layouts;
 
 import controller.appcontainer.ExitAppHandler;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ public class ApplicationContainer extends BorderPane {
 		stage.setResizable(false);
 		stage.setOnCloseRequest(e -> {	new ExitAppHandler().handle(new ActionEvent());	});
 		this.stage.setTitle("Web Page Automation");
+		this.stage.getIcons().add(new Image(this.getClass().getResource("/images/hiRes.png").toExternalForm()));
 		this.menuBar = new ApplicationMenuBar();
 		this.pageContainer = new StackPane();
 		this.setTop(this.menuBar);
@@ -45,9 +47,9 @@ public class ApplicationContainer extends BorderPane {
 		this.currentPage.fadeOut(callBack -> {			
 			this.pageContainer.getChildren().remove(this.currentPage);
 			newView.setVisible(true);
+			newView.updateHeader();
 			newView.fadeIn(callBack2 -> {
 				this.currentPage = newView;
-				newView.updateHeader();
 			});			
 		});
 		
