@@ -1,6 +1,7 @@
 package view.pages.timesheet;
 
 import controller.utils.TextCharacterLimiter;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,20 +13,21 @@ public class TimeSheetLoginView extends ApplicationLayout {
 	private TextField username;
 	private PasswordField password;
 	private final int MAX_CHARACTERS = 25;
+	private Button logInBtn;
 	
 	
 	public TimeSheetLoginView() {
 		super();
 		this.makeGoBackButton();
 		this.buildLoginForm();
+		this.title.setText("Login");
+		this.description.setText("Provide your TimeSheet username and password.");
 		this.getStylesheets().add(getClass().getResource("/CSS/login.css").toExternalForm());
 	}
 
 
 	@Override
-	public void updateHeader() {
-		this.title.setText("Login");
-		this.description.setText("Provide your TimeSheet username and password.");
+	public void updateHeader() {		
 		this.getApplicationContainer().getStage().setTitle("TimeSheet Filler");
 	}
 	
@@ -42,9 +44,18 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		Label userNameDesc = new Label("Username");
 		Label passwordDesc = new Label("Password");
 		
+		this.logInBtn = new Button("Log In");
+		this.logInBtn.setTranslateX(160);
+		this.logInBtn.setTranslateY(20);
+		
+		this.logInBtn.setOnAction(event -> {
+			// TODO do it!
+		});
+		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);
-		this.setCenter(loginContainer);
+		loginContainer.add(this.logInBtn, 1, 2);
+		this.setCenter(loginContainer);		
 	}
 	
 	

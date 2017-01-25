@@ -1,6 +1,6 @@
 
 #header-container {
-	-fx-background-color: #ffa84c;
+	-fx-background-color: #ffb466;
 	-fx-min-height: 110;
 }
 
@@ -46,5 +46,5 @@
 }
 
 .label {
-	-fx-text-fill: red;
+	-fx-text-fill: #21c0ff;
 }
