@@ -16,6 +16,7 @@ public class GoBackHandler implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent event) {
+		callerPage.preventUserActions(true);
 		callerPage.getApplicationContainer().switchView(callerPage.getPreviousPage());
 	}
 

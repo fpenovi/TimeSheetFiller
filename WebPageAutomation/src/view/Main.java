@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.layouts.ApplicationContainer;
 import view.pages.ProductSelectionView;
+import view.utils.Constants;
 
 public class Main extends Application {
 	
@@ -18,7 +19,7 @@ public class Main extends Application {
 		ApplicationContainer appContainer = new ApplicationContainer(stage);
 		ProductSelectionView entryView = new ProductSelectionView();
 
-		Scene scene = new Scene(appContainer, 450, 650);
+		Scene scene = new Scene(appContainer, Constants.APP_WIDTH, Constants.APP_HEIGHT);
 		stage.setScene(scene);
 		
 		stage.show();

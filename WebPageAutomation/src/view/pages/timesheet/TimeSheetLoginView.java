@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import view.layouts.ApplicationLayout;
+import view.utils.Constants;
 
 public class TimeSheetLoginView extends ApplicationLayout {
 	
@@ -27,8 +28,8 @@ public class TimeSheetLoginView extends ApplicationLayout {
 
 
 	@Override
-	public void updateHeader() {		
-		this.getApplicationContainer().getStage().setTitle("TimeSheet Filler");
+	public String getAppTitle() {		
+		return Constants.TIMESHEET_TITLE;
 	}
 	
 	
@@ -45,17 +46,17 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		Label passwordDesc = new Label("Password");
 		
 		this.logInBtn = new Button("Log In");
-		this.logInBtn.setTranslateX(160);
-		this.logInBtn.setTranslateY(20);
+		this.logInBtn.setId("timesheet-login-btn");
+		this.logInBtn.getStyleClass().add("master-btn");
 		
 		this.logInBtn.setOnAction(event -> {			
-			
+
 		});
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);
 		loginContainer.add(this.logInBtn, 1, 2);
-		this.setCenter(loginContainer);		
+		this.miniPageContainer.setCenter(loginContainer);		
 	}
 	
 	

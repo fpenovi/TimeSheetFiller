@@ -20,6 +20,7 @@ public class NextButtonHandler implements EventHandler<ActionEvent> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void handle(ActionEvent event) {
+		callerPage.preventUserActions(true);
 		ComboBox<WebPage> select = (ComboBox<WebPage>) callerPage.lookup("#combobox-products");
 		ProductViewManager chosenProductManager = GUIManager.getInstance().getProductViewManager(select.getSelectionModel().getSelectedItem().getCode());
 		ApplicationContainer appContainer = callerPage.getApplicationContainer();

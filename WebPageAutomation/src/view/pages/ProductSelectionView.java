@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import model.webpages.WebPage;
 import view.layouts.ApplicationLayout;
+import view.utils.Constants;
 
 public class ProductSelectionView extends ApplicationLayout {
 	
@@ -21,15 +22,15 @@ public class ProductSelectionView extends ApplicationLayout {
 		populateProductSelecter();
 		setUpNextButton();
 		setUpContainer();		
-		this.setCenter(this.container);
+		this.miniPageContainer.setCenter(this.container);
 		this.getStylesheets().add(getClass().getResource("/CSS/product-selection.css").toExternalForm());
 		Event.fireEvent(this.productSelecter, new ActionEvent());	// Applies the change of selecting the first element
 	}
 	
 	
 	@Override
-	public void updateHeader() {
-		this.getApplicationContainer().getStage().setTitle("Web Page Automation");
+	public String getAppTitle() {
+		return Constants.APP_TITLE;
 	}
 		
 
@@ -45,6 +46,7 @@ public class ProductSelectionView extends ApplicationLayout {
 	
 	private void setUpNextButton() {
 		this.nextButton = new Button("Next");
+		this.nextButton.getStyleClass().add("master-btn");
 		this.nextButton.setOnAction(new NextButtonHandler(this));
 	}
 	

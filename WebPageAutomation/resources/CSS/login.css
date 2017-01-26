@@ -10,3 +10,8 @@
 	-fx-min-width: 210;
 	-fx-max-width: 210;
 }
+
+#timesheet-login-btn {
+	-fx-translate-x: 160;
+	-fx-translate-y: 20;
+}

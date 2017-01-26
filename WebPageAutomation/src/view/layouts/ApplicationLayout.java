@@ -13,12 +13,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import view.utils.Constants;
 
-public abstract class ApplicationLayout extends BorderPane {
+public abstract class ApplicationLayout extends StackPane {
 	
+	protected BorderPane miniPageContainer;
 	protected HBox header;
 	protected HBox footer;
 	protected Label title;
@@ -30,15 +33,18 @@ public abstract class ApplicationLayout extends BorderPane {
 	protected Boolean opacitiesSaved = false;
 	protected Group fadeables;
 	protected ApplicationLayout previousPage;
-	private final Double FADE_SPEED = 1000.0;
+	private VBox clickBlocker;
 	
 	
 	public ApplicationLayout() {
+		this.miniPageContainer = new BorderPane();
+		this.getChildren().add(this.miniPageContainer);
 		this.header = new HBox();
 		this.footer = new HBox();
 		buildHeader();		
-		this.setTop(this.header);
-		this.setBottom(this.footer);
+		this.miniPageContainer.setTop(this.header);
+		this.miniPageContainer.setBottom(this.footer);
+		buildModals();
 		this.getStylesheets().add(getClass().getResource("/CSS/application-layout.css").toExternalForm());
 	}
 	
@@ -86,12 +92,17 @@ public abstract class ApplicationLayout extends BorderPane {
 	}
 	
 	
+	public void preventUserActions(Boolean prevent) {
+		this.clickBlocker.setVisible(prevent);
+	}
+	
+	
 	protected void makeGoBackButton() {
 		this.goBack.setVisible(true);
 	}
 	
 	
-	public abstract void updateHeader();
+	public abstract String getAppTitle();
 	
 	
 //	************** PRIVATE METHODS **************
@@ -107,7 +118,7 @@ public abstract class ApplicationLayout extends BorderPane {
 		this.goBack = new Button("");
 		this.goBack.getStyleClass().add("header-go-back-btn");
 		this.goBack.setVisible(false);
-		this.goBack.setOnAction(new GoBackHandler(this));		
+		this.goBack.setOnAction(new GoBackHandler(this));
 		
 		VBox vbTextContainer = new VBox();
 		vbTextContainer.setId("title-description-container");
@@ -121,10 +132,10 @@ public abstract class ApplicationLayout extends BorderPane {
 		if (!opacitiesSaved)
 			saveOpacities();
 		
-		FadeTransition fadeInTitle = new FadeTransition(Duration.millis(FADE_SPEED), this.title);
-		FadeTransition fadeInDesc = new FadeTransition(Duration.millis(FADE_SPEED), this.description);
-		FadeTransition fadeInGoBack = new FadeTransition(Duration.millis(FADE_SPEED), this.goBack);
-		FadeTransition fadeInPage = new FadeTransition(Duration.millis(FADE_SPEED), this.getCenter());
+		FadeTransition fadeInTitle = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.title);
+		FadeTransition fadeInDesc = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.description);
+		FadeTransition fadeInGoBack = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.goBack);
+		FadeTransition fadeInPage = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.miniPageContainer.getCenter());
 		fadeInTitle.setFromValue(0);
 		fadeInTitle.setToValue(this.titleOpacity);
 		fadeInDesc.setFromValue(0);
@@ -143,10 +154,10 @@ public abstract class ApplicationLayout extends BorderPane {
 		if (!opacitiesSaved)
 			saveOpacities();
 		
-		FadeTransition fadeOutTitle = new FadeTransition(Duration.millis(FADE_SPEED), this.title);
-		FadeTransition fadeOutDesc = new FadeTransition(Duration.millis(FADE_SPEED), this.description);
-		FadeTransition fadeOutGoBack = new FadeTransition(Duration.millis(FADE_SPEED), this.goBack);
-		FadeTransition fadeOutPage = new FadeTransition(Duration.millis(FADE_SPEED), this.getCenter());
+		FadeTransition fadeOutTitle = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.title);
+		FadeTransition fadeOutDesc = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.description);
+		FadeTransition fadeOutGoBack = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.goBack);
+		FadeTransition fadeOutPage = new FadeTransition(Duration.millis(Constants.APP_SWITCH_PAGE_SPEED), this.miniPageContainer.getCenter());
 		fadeOutTitle.setFromValue(this.titleOpacity);
 		fadeOutTitle.setToValue(0);
 		fadeOutDesc.setFromValue(this.descriptionOpacity);
@@ -166,6 +177,14 @@ public abstract class ApplicationLayout extends BorderPane {
 		this.descriptionOpacity = this.description.getOpacity();
 		this.goBackOpacity = this.goBack.getOpacity();
 		this.opacitiesSaved = true;
+	}
+	
+	
+	private void buildModals() {
+		this.clickBlocker = new VBox();
+		this.clickBlocker.setMinSize(Constants.APP_WIDTH, Constants.APP_HEIGHT);
+		this.clickBlocker.setVisible(false);
+		this.getChildren().add(this.clickBlocker);
 	}
 
 
