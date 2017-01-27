@@ -6,12 +6,11 @@
 	-fx-vgap: 10;
 }
 
-.login-input {
-	-fx-min-width: 210;
-	-fx-max-width: 210;
+.timesheet-login-label {
+	-fx-text-fill: #21c0ff;
 }
 
 #timesheet-login-btn {
-	-fx-translate-x: 160;
+	-fx-translate-x: 152;
 	-fx-translate-y: 20;
 }

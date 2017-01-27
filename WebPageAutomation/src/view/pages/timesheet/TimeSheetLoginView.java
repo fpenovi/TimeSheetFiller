@@ -44,6 +44,8 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		this.password.setTextFormatter(new TextCharacterLimiter(MAX_CHARACTERS));
 		Label userNameDesc = new Label("Username");
 		Label passwordDesc = new Label("Password");
+		userNameDesc.getStyleClass().add("timesheet-login-label");
+		passwordDesc.getStyleClass().add("timesheet-login-label");
 		
 		this.logInBtn = new Button("Log In");
 		this.logInBtn.setId("timesheet-login-btn");

@@ -46,9 +46,27 @@
 }
 
 .label {
-	-fx-text-fill: #21c0ff;
+	
+}
+
+.login-input {
+	-fx-min-width: 210;
+	-fx-max-width: 210;
 }
 
 .master-btn {
-	
+	-fx-text-fill: white;
+	-fx-background-color: #21c0ff;
+	-fx-background-radius: 0 0 0 0;
+	-fx-focus-traversable: false;
+	-fx-font-weight: bold;
+	-fx-font-size: 13;
+}
+
+.master-btn:hover {
+	-fx-background-color: #1eaee8;
+}
+
+.master-btn:pressed {
+	-fx-background-color: rgba(30, 174, 232, 0.75);
 }
