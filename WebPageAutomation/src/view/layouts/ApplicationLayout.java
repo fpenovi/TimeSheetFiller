@@ -11,10 +11,13 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import view.utils.Constants;
@@ -34,6 +37,7 @@ public abstract class ApplicationLayout extends StackPane {
 	protected Group fadeables;
 	protected ApplicationLayout previousPage;
 	private VBox clickBlocker;
+	private VBox loadingModal;
 	
 	
 	public ApplicationLayout() {
@@ -97,12 +101,62 @@ public abstract class ApplicationLayout extends StackPane {
 	}
 	
 	
+	public Boolean isLoading() {
+		return this.loadingModal.isVisible();
+	}
+	
+	
 	protected void makeGoBackButton() {
 		this.goBack.setVisible(true);
 	}
 	
 	
+	protected void showLoadingModal(Boolean show) {
+		
+		if (show && this.clickBlocker.isVisible())
+			return;
+		
+		this.loadingModal.setVisible(show);
+		
+		ParallelTransition showModal = new ParallelTransition();
+		FadeTransition fadeScreen = new FadeTransition(Duration.millis(Constants.APP_LOADING_MODAL_ANIMATION), this.clickBlocker);
+		FadeTransition fadeSpinner = new FadeTransition(Duration.millis(Constants.APP_LOADING_MODAL_ANIMATION), this.loadingModal);
+		
+		if (show) {
+			this.clickBlocker.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+			fadeScreen.setFromValue(0);
+			fadeScreen.setToValue(0.6);
+			fadeSpinner.setFromValue(0);
+			fadeSpinner.setToValue(1);
+		}
+		
+		else {
+			this.clickBlocker.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, null, null)));
+			fadeScreen.setFromValue(0.6);
+			fadeScreen.setToValue(0);
+			fadeSpinner.setFromValue(1);
+			fadeSpinner.setToValue(0);
+		}
+		
+		showModal.getChildren().addAll(fadeScreen, fadeSpinner);
+		
+		if (!show)
+			showModal.setOnFinished(callback -> {
+				this.clickBlocker.setVisible(false);
+				this.loadingModal.setVisible(false);
+			});
+		
+		showModal.play();
+		
+		if (show)
+			this.clickBlocker.setVisible(true);
+		
+		this.disableFocus(show);
+	}
+
+
 	public abstract String getAppTitle();
+	protected abstract void disableFocus(Boolean disable);
 	
 	
 //	************** PRIVATE METHODS **************
@@ -184,6 +238,12 @@ public abstract class ApplicationLayout extends StackPane {
 		this.clickBlocker = new VBox();
 		this.clickBlocker.setMinSize(Constants.APP_WIDTH, Constants.APP_HEIGHT);
 		this.clickBlocker.setVisible(false);
+
+		this.loadingModal = new VBox();
+		this.loadingModal.setVisible(false);
+		this.loadingModal.getStyleClass().add("loading-modal");
+
+		this.clickBlocker.getChildren().add(this.loadingModal);
 		this.getChildren().add(this.clickBlocker);
 	}
 

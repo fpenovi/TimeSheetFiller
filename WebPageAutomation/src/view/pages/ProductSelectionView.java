@@ -32,6 +32,12 @@ public class ProductSelectionView extends ApplicationLayout {
 	public String getAppTitle() {
 		return Constants.APP_TITLE;
 	}
+	
+	
+	@Override
+	protected void disableFocus(Boolean disable) {
+		// TODO do it
+	}
 		
 
 	private void populateProductSelecter() {
