@@ -1,5 +1,6 @@
 package view.pages.timesheet;
 
+import controller.timesheet.handlers.login.LoginButtonHandler;
 import controller.utils.TextCharacterLimiter;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,9 +36,15 @@ public class TimeSheetLoginView extends ApplicationLayout {
 	
 	@Override
 	protected void disableFocus(Boolean disable) {
-		this.requestFocus();
+
 		this.username.setFocusTraversable(!disable);
 		this.password.setFocusTraversable(!disable);
+		
+		if (disable)
+			this.requestFocus();
+		
+		else
+			this.username.requestFocus();
 	}
 	
 	
@@ -59,11 +66,7 @@ public class TimeSheetLoginView extends ApplicationLayout {
 		this.logInBtn.setId("timesheet-login-btn");
 		this.logInBtn.getStyleClass().add("master-btn");
 		
-		this.logInBtn.setOnAction(event -> {
-			
-			if (!this.isLoading())			
-				this.showLoadingModal(true);
-		});
+		this.logInBtn.setOnAction(new LoginButtonHandler(this));
 		
 		loginContainer.addColumn(0, userNameDesc, passwordDesc);
 		loginContainer.addColumn(1, this.username, this.password);

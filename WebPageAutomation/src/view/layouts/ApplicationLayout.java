@@ -111,7 +111,7 @@ public abstract class ApplicationLayout extends StackPane {
 	}
 	
 	
-	protected void showLoadingModal(Boolean show) {
+	public void showLoadingModal(Boolean show) {
 		
 		if (show && this.clickBlocker.isVisible())
 			return;
@@ -130,8 +130,7 @@ public abstract class ApplicationLayout extends StackPane {
 			fadeSpinner.setToValue(1);
 		}
 		
-		else {
-			this.clickBlocker.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, null, null)));
+		else {			
 			fadeScreen.setFromValue(0.6);
 			fadeScreen.setToValue(0);
 			fadeSpinner.setFromValue(1);
@@ -144,6 +143,7 @@ public abstract class ApplicationLayout extends StackPane {
 			showModal.setOnFinished(callback -> {
 				this.clickBlocker.setVisible(false);
 				this.loadingModal.setVisible(false);
+				this.clickBlocker.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, null, null)));
 			});
 		
 		showModal.play();
