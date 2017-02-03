@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -125,13 +127,13 @@ public abstract class ApplicationLayout extends StackPane {
 		if (show) {
 			this.clickBlocker.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
 			fadeScreen.setFromValue(0);
-			fadeScreen.setToValue(0.6);
+			fadeScreen.setToValue(0.7);
 			fadeSpinner.setFromValue(0);
 			fadeSpinner.setToValue(1);
 		}
 		
 		else {			
-			fadeScreen.setFromValue(0.6);
+			fadeScreen.setFromValue(0.7);
 			fadeScreen.setToValue(0);
 			fadeSpinner.setFromValue(1);
 			fadeSpinner.setToValue(0);
@@ -237,9 +239,9 @@ public abstract class ApplicationLayout extends StackPane {
 	private void buildModals() {
 		this.clickBlocker = new VBox();
 		this.clickBlocker.setMinSize(Constants.APP_WIDTH, Constants.APP_HEIGHT);
-		this.clickBlocker.setVisible(false);
-
-		this.loadingModal = new VBox();
+		this.clickBlocker.setVisible(false);	
+		
+		this.loadingModal = new VBox(new ImageView(new Image(getClass().getResource("/images/load-animation.gif").toExternalForm())));
 		this.loadingModal.setVisible(false);
 		this.loadingModal.getStyleClass().add("loading-modal");
 

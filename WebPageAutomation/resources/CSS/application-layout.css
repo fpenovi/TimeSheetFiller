@@ -72,11 +72,6 @@
 }
 
 .loading-modal {
-	-fx-background-color: red;
-	-fx-min-width: 50;
-	-fx-min-height: 50;
-	-fx-max-width: 50;
-	-fx-max-height: 50;
-	-fx-translate-x: 200;
-	-fx-translate-y: 300;
+	-fx-alignment: center;
+	-fx-translate-y: 250;
 }

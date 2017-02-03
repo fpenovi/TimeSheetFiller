@@ -19,7 +19,7 @@ public class TimeSheetLoginService extends Service<String> {
 
 			@Override
 			protected String call() throws Exception {
-				Thread.sleep(2000);		// Simulating load time
+				Thread.sleep(5000);		// Simulating load time
 				return "OK";
 			}
 			
