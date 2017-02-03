@@ -40,6 +40,7 @@ public abstract class ApplicationLayout extends StackPane {
 	protected ApplicationLayout previousPage;
 	private VBox clickBlocker;
 	private VBox loadingModal;
+	private Label loadingLabel;
 	
 	
 	public ApplicationLayout() {
@@ -240,8 +241,10 @@ public abstract class ApplicationLayout extends StackPane {
 		this.clickBlocker = new VBox();
 		this.clickBlocker.setMinSize(Constants.APP_WIDTH, Constants.APP_HEIGHT);
 		this.clickBlocker.setVisible(false);	
-		
-		this.loadingModal = new VBox(new ImageView(new Image(getClass().getResource("/images/load-animation.gif").toExternalForm())));
+				
+		this.loadingLabel = new Label("Loading...");
+		this.loadingLabel.setId("loading-label");
+		this.loadingModal = new VBox(new ImageView(new Image(getClass().getResource("/images/load-animation.gif").toExternalForm())), this.loadingLabel);
 		this.loadingModal.setVisible(false);
 		this.loadingModal.getStyleClass().add("loading-modal");
 

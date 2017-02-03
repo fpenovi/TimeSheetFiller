@@ -75,3 +75,7 @@
 	-fx-alignment: center;
 	-fx-translate-y: 250;
 }
+
+#loading-label {
+	-fx-text-fill: white;
+}
